@@ -29,7 +29,8 @@ defmodule TestJSON.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:ecto, "~> 2.1"}
+      {:ecto, "~> 2.1"},
+      {:postgrex, "~> 0.13.2"}
     ]
   end
 end
