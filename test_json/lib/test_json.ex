@@ -1,6 +1,6 @@
-defmodule TestJson do
+defmodule TestJSON do
   @moduledoc """
-  Documentation for TestJson.
+  Documentation for TestJSON.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule TestJson do
 
   ## Examples
 
-      iex> TestJson.hello
+      iex> TestJSON.hello
       :world
 
   """

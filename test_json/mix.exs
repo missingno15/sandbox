@@ -1,4 +1,4 @@
-defmodule TestJson.Mixfile do
+defmodule TestJSON.Mixfile do
   use Mix.Project
 
   def project do
