@@ -9,6 +9,7 @@
 
 - [ ] Take a screenshot of the log emitted with saving and updating a JSON array with objects.
 - [ ] Write a SQL trigger that ensures a certain schema for certain JSON objects.
+- [ ] Map the SQL trigger to an Ecto.Changeset callback so that the Ecto.Changeset returns an error provided by the SQL trigger.
 
 ## Related Links I Found Useful
 
