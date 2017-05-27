@@ -2,8 +2,8 @@
 
 ## What I Want To Test
 
-* I'm not sure how what the behavior is when saving or updating JSON(B) arrays with JSON objects in a SQL environment.
-* If I wanted to write a SQL trigger that checks this array for JSON array for certain JSON objects 
+* I'm not sure how what the behavior is when saving or updating JSON(B) arrays with JSON objects in a SQL environment using Elixir.
+* If I wanted to write a SQL trigger that checks this array for JSON array for certain JSON objects.
 
 ## Todo
 
