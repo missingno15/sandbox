@@ -1,20 +1,15 @@
 # TestJSON
 
-To start your Phoenix server:
+## What I Want To Test
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+* I'm not sure how what the behavior is when saving or updating JSON(B) arrays with JSON objects in a SQL environment.
+* If I wanted to write a SQL trigger that checks this array for JSON array for certain JSON objects 
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Todo
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+- [] Take a screenshot of the log emitted with saving and updating a JSON array with objects.
+- [] Write a SQL trigger that ensures a certain schema for certain JSON objects.
 
-## Learn more
+## Related Links I Found Useful
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+* https://blog.hagander.net/json-field-constraints-228/
