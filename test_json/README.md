@@ -7,8 +7,8 @@
 
 ## Todo
 
-- [] Take a screenshot of the log emitted with saving and updating a JSON array with objects.
-- [] Write a SQL trigger that ensures a certain schema for certain JSON objects.
+- [ ] Take a screenshot of the log emitted with saving and updating a JSON array with objects.
+- [ ] Write a SQL trigger that ensures a certain schema for certain JSON objects.
 
 ## Related Links I Found Useful
 
