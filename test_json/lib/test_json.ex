@@ -1,18 +1,15 @@
 defmodule TestJSON do
-  @moduledoc """
-  Documentation for TestJSON.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(_type, _args) do
+    import Supervisor.Spec, warn: false
 
-  ## Examples
+    IO.puts "#{__MODULE__} application started"
+ 
+    children = [
+      supervisor(TestJSON.Repo, [])
+    ]
 
-      iex> TestJSON.hello
-      :world
-
-  """
-  def hello do
-    :world
+    Supervisor.start_link(children, strategy: :one_for_one)
   end
 end

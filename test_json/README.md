@@ -7,7 +7,7 @@
 
 ## Todo
 
-- [ ] Take a screenshot of the log emitted with saving and updating a JSON array with objects.
+- [x] Take a screenshot of the log emitted with saving and updating a JSON array with objects.
 - [ ] Write a SQL trigger that ensures a certain schema for certain JSON objects.
 - [ ] Make it so that the corresponding Ecto.Changeset returns the error from the SQL trigger on update.
 

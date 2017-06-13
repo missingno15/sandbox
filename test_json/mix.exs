@@ -15,7 +15,15 @@ defmodule TestJSON.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger]]
+    [
+      mod: {TestJSON, []},
+      extra_applications: [
+        :logger, 
+        :ecto, 
+        :postgrex,
+        :poison
+      ]
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -30,7 +38,8 @@ defmodule TestJSON.Mixfile do
   defp deps do
     [
       {:ecto, "~> 2.1"},
-      {:postgrex, "~> 0.13.2"}
+      {:postgrex, "~> 0.13.2"},
+      {:poison, "~> 3.1"}
     ]
   end
 end
