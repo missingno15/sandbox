@@ -11,7 +11,7 @@
 
 ## Todo
 
-- [ ] Setup dependencies like Poison
+- [x] Setup dependencies like Poison
 - [ ] Write module that fetches for new comments
 - [ ] Write module that filters for new comments using the Stream module
 
