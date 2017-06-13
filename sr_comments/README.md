@@ -1,19 +1,20 @@
 # SrComments
 
-**TODO: Add description**
+## What I Want To Test
 
-## Installation
+* Find out the polling interval limit of comments in a stream since thats what the code seems to do
+  when pulling new comments to show (with Backbone Marionette) (instead of using Websockets) 
+* Try out the Stream Module in Elixir when processing for new comments. The naive Ruby implementation
+  that I made lags and I think its mostly likely because the current implementation eagerly fetches
+  new comments and does some processing on it for new comments
+* _Maybe_ try GenStage as a possible solution
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `sr_comments` to your list of dependencies in `mix.exs`:
+## Todo
 
-```elixir
-def deps do
-  [{:sr_comments, "~> 0.1.0"}]
-end
-```
+- [ ] Setup dependencies like Poison
+- [ ] Write module that fetches for new comments
+- [ ] Write module that filters for new comments using the Stream module
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/sr_comments](https://hexdocs.pm/sr_comments).
+## Related Links I Found Useful
 
+* https://hexdocs.pm/elixir/Stream.html
