@@ -1,6 +1,6 @@
-defmodule Showroom do
+defmodule Showroom.CommentLog do
   @moduledoc """
-  Documentation for Showroom.
+  Documentation for Showroom.CommentLog.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule Showroom do
 
   ## Examples
 
-      iex> Showroom.hello
+      iex> Showroom.CommentLog.hello
       :world
 
   """
