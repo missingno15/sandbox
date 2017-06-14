@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :sr_comments, key: :value
+#     config :showroom_comment, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:sr_comments, :key)
+#     Application.get_env(:showroom_comment, :key)
 #
 # Or configure a 3rd-party app:
 #

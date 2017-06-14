@@ -1,6 +1,6 @@
-defmodule SrComments do
+defmodule Showroom do
   @moduledoc """
-  Documentation for SrComments.
+  Documentation for Showroom.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule SrComments do
 
   ## Examples
 
-      iex> SrComments.hello
+      iex> Showroom.hello
       :world
 
   """

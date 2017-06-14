@@ -1,8 +1,8 @@
-defmodule SrComments.Mixfile do
+defmodule Showroom.Comment.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :sr_comments,
+    [app: :showroom_comment,
      version: "0.1.0",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
@@ -30,7 +30,8 @@ defmodule SrComments.Mixfile do
   defp deps do
     [
       {:poison, "~> 3.1"},
-      {:httpoison, "~> 0.11.2"}
+      {:httpoison, "~> 0.11.2"},
+      {:gen_stage, "~> 0.12.0"}
     ]
   end
 end

@@ -1,6 +1,6 @@
-defmodule SrCommentsTest do
+defmodule Showroom.CommentTest do
   use ExUnit.Case
-  doctest SrComments
+  doctest Showroom.Comment
 
   test "the truth" do
     assert 1 + 1 == 2

@@ -1,0 +1,37 @@
+{
+    "upload_url": "",
+    "did_send_live_bad_report": false,
+    "streaming_url_hls": "https://edge-210-140-227-209.showroom-live.com:443/liveedge/e22c855b8ff3ae56b76035ea4392ca0324bdc682f40804ceff6dfb91579ac20c/playlist.m3u8",
+    "is_enquete": false,
+    "anteroom_id": 0,
+    "is_enabled_full_screen": false,
+    "is_owner": false,
+    "share": {
+        "twitter": {
+            "text": "大西 桃香（AKB48 チーム８） 配信中!! \nhttps://www.showroom-live.com/48_Momoka_Onishi",
+            "url": "https://www.showroom-live.com/48_Momoka_Onishi"
+        }
+    },
+    "can_comment": true,
+    "started_at": 1497385830,
+    "is_live": true,
+    "streaming_name_rtmp": "e22c855b8ff3ae56b76035ea4392ca0324bdc682f40804ceff6dfb91579ac20c",
+    "live_id": 1911448,
+    "room_name": "大西 桃香（AKB48 チーム８）",
+    "background_image_url": "",
+    "broadcast_key": "1d2a98:Xonda0jq",
+    "is_official": true,
+    "video_type": 0,
+    "broadcast_port": 8080,
+    "image_s": "https://image.showroom-live.com/showroom-prod/image/room/cover/fa155117def6049a53cb4e41e5aefdcb1feb324e9ea09f402362c68166d93fd1_s.png?v=1495695745",
+    "live_type": 0,
+    "broadcast_host": "online.showroom-live.com",
+    "live_user_key": "4e55d487c461b33c48593f383c01335c8aa430fec4860994f46714db99516ec7",
+    "genre_id": 102,
+    "is_fav": false,
+    "streaming_url_rtmp": "rtmp://210.140.227.162:1935/liveedge",
+    "youtube_id": "_pjovDamGHI",
+    "live_status": 2,
+    "room_id": 61627,
+    "nsta_owner": false
+}
