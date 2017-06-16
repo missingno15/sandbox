@@ -9,8 +9,7 @@ defmodule Showroom.CommentLog do
   def track(room_id, pointer \\ nil) do
     case HTTPoison.get!("#{@comment_endpoint}?room_id=#{room_id}") do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        response = 
-          json = Poison.decode!(response.body)
+          json = Poison.decode!(body)
 
           comments = json["comment_log"] 
           [most_recent_comment | _tail] = comments
