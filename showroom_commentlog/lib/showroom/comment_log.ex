@@ -14,7 +14,7 @@ defmodule Showroom.CommentLog do
           comments = json["comment_log"] 
           [most_recent_comment | _tail] = comments
 
-          display_comments(pointer)
+          display_comments(comments, pointer)
 
           track(room_id, most_recent_comment)
       {_, response} ->
@@ -25,12 +25,12 @@ defmodule Showroom.CommentLog do
     end
   end
 
-  defp display_comments(nil) do
+  defp display_comments(comments, nil) do
     Enum.reverse(comments)
     |> Stream.each(&(&display_comment/1))
     |> Stream.run()
   end
-  defp display_comments(pointer) do
+  defp display_comments(comments, pointer) do
     # since Enum.find_index/2 is index based, the index value
     # itself gets us the correct amount of latest comments with
     # {Enum,Stream}.take/2
