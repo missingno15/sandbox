@@ -7,7 +7,7 @@ defmodule Showroom.CommentLog do
   @comment_endpoint "https://www.showroom-live.com/api/live/comment_log"
 
   def track(room_id, pointer \\ nil) do
-    case HTTPoison.get!("#{@comment_endpoint}?room_id=#{room_id}") do
+    case HTTPoison.get("#{@comment_endpoint}?room_id=#{room_id}") do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
           json = Poison.decode!(body)
 
@@ -27,7 +27,7 @@ defmodule Showroom.CommentLog do
 
   defp display_comments(comments, nil) do
     Enum.reverse(comments)
-    |> Stream.each(&(&display_comment/1))
+    |> Stream.each(&display_comment/1)
     |> Stream.run()
   end
   defp display_comments(comments, pointer) do
@@ -38,7 +38,7 @@ defmodule Showroom.CommentLog do
 
     Enum.reverse(comments)
     |> Stream.take(index_of_last_latest_comment) 
-    |> Stream.each(&(&display_comment/1))
+    |> Stream.each(&display_comment/1)
     |> Stream.run()
   end
 
