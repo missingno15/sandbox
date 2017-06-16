@@ -1,3 +1,4 @@
+require IEx
 defmodule Showroom.CommentLog do
   @moduledoc """
   Documentation for Showroom.CommentLog.
@@ -13,11 +14,16 @@ defmodule Showroom.CommentLog do
 
     [most_recent_comment | _tail] = comments
 
+    IEx.pry
+
     if pointer == nil do
 
-      comments
+      Enum.reverse(comments)
+      |> Stream.drop_while(fn comment -> 
+        String.match?(comment["comment"], ~r/^([0-4]?[0-9]|[０-４]?[０-９]|50|５０)$/u)
+      end)
       |> Stream.each(fn comment ->
-        IO.puts("#{String.pad_trailing(comment["name"], 30)}#{comment["comment"]}")
+        IO.puts("#{comment["name"]}: #{comment["comment"]}")
       end)
       |> Stream.run()
       
@@ -27,17 +33,23 @@ defmodule Showroom.CommentLog do
       # {Enum,Stream}.take/2
       index_of_last_latest_comment = Enum.find_index(comments, &(&1 == pointer))
 
-      comments
+      Enum.reverse(comments)
       |> Stream.take(index_of_last_latest_comment) 
+      |> Stream.drop_while(fn comment -> 
+        String.match?(comment["comment"], ~r/^([0-4]?[0-9]|[０-４]?[０-９]|50|５０)$/u)
+      end)
       |> Stream.each(fn comment ->
-        IO.puts("#{String.pad_trailing(comment["name"], 30)}#{comment["comment"]}")
+        IO.puts("#{comment["name"]}: #{comment["comment"]}")
       end)
       |> Stream.run()
 
     end
 
     :timer.sleep(:timer.seconds(1))
-
     track(room_id, most_recent_comment)
   end
+
+  # defp matches_count_number?(comment) do
+  #   String.match?(comment["comment"], ~r/^([0-4]?[0-9]|[０-４]?[０-９]|50|５０)$/u)
+  # end
 end

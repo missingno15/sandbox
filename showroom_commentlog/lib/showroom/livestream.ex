@@ -1,4 +1,7 @@
 defmodule Showroom.Livestream do
+  @moduledoc """
+  Module for things related to a SHOWROOM livestream.
+  """
 
   @room_status_endpoint "https://www.showroom-live.com/api/room/status"
 

@@ -19,7 +19,7 @@
 
 ## How To Run
 
-`iex bin/track.exs`
+`iex -S mix run bin/track.exs`
 
 An anonymous function wraps what needs to be run to start tracking the comment log of a SHOWROOM livestream which is assigned to a variable called `track`
 
@@ -28,7 +28,7 @@ Here is how you correctly invoke the `track` function. Given a url to a livestre
 # We want to track https://www.showroom-live.com/48_NAKAI_RIKA
 # so in this case, the room_url_key is 48_NAKAI_RIKA
 
-track("48_NAKAI_RIKA")
+track.("48_NAKAI_RIKA")
 ```
 
 
