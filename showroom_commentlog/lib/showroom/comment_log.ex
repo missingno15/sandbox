@@ -9,14 +9,14 @@ defmodule Showroom.CommentLog do
   def track(room_id, pointer \\ nil) do
     case HTTPoison.get("#{@comment_endpoint}?room_id=#{room_id}") do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-          json = Poison.decode!(body)
+        json = Poison.decode!(body)
 
-          comments = json["comment_log"] 
-          [most_recent_comment | _tail] = comments
+        comments = json["comment_log"] 
+        [most_recent_comment | _tail] = comments
 
-          display_comments(comments, pointer)
+        display_comments(comments, pointer)
 
-          track(room_id, most_recent_comment)
+        track(room_id, most_recent_comment)
       {_, response} ->
         # if its not a 200 response, just inspect it
         IO.inspect(response)
