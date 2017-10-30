@@ -10,5 +10,6 @@ defmodule TestJSON.ShoppingList do
     shopping_list
     |> cast(params, [:items])
     |> validate_required([:items])
+    |> unique_constraint(:items, name: "sns_constraint", message: "one or more twitter object does not follow schema")
   end
 end

@@ -1,3 +1,4 @@
+require IEx
 defmodule TestJSON.ShoppingListTest do
   use ExUnit.Case
   alias TestJSON.ShoppingList
@@ -43,6 +44,26 @@ defmodule TestJSON.ShoppingListTest do
       changeset = ShoppingList.changeset(%ShoppingList{}, shopping_list)
 
       refute changeset.valid?
+    end
+
+    test "twitter maps contains specified object keys" do
+      valid_shopping_list = %{"items" => [
+        %{"sns_type" => "twitter", "username" => "tsuribit_sakura"}
+      ]}
+
+      valid_changeset = ShoppingList.changeset(%ShoppingList{}, valid_shopping_list)
+
+      assert valid_changeset.valid?
+
+      invalid_shopping_list = %{"items" => [
+        %{"sns_type" => "twitter", "username" => "Reia_FESTIVE", "unnecessary_key" => "unnecessary_value"}
+      ]}
+
+      invalid_changeset = ShoppingList.changeset(%ShoppingList{}, invalid_shopping_list)
+
+      # IEx.pry
+
+      {:error, _} = TestJSON.Repo.insert(invalid_changeset)
     end
   end
 end
