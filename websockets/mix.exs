@@ -16,7 +16,8 @@ defmodule Websockets.Mixfile do
     [
       extra_applications: [
         :logger,
-        :timex
+        :timex,
+        :httpoison
       ]
     ]
   end
@@ -25,7 +26,9 @@ defmodule Websockets.Mixfile do
   defp deps do
     [
       {:websockex, "~> 0.4.0"},
-      {:timex, "~> 3.1"}
+      {:timex, "~> 3.1"},
+      {:httpoison, "~> 0.13.0"},
+      {:poison, "~> 3.1"}
     ]
   end
 end
