@@ -8,7 +8,7 @@
 ## Todo
 
 - [x] Connect to web socket
-- [ ] Filter out the data
-- [ ] Keep track of certain analytics
+- [x] Filter out the data
+- [x] Keep track of certain analytics
 
 ## Related Links I Found Useful
