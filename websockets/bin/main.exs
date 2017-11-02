@@ -1,3 +1,3 @@
 System.argv()
 |> List.first()
-|> Websockets.play()
+|> Websockets.start()
