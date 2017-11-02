@@ -1,21 +1,14 @@
-# Websockets
+# Web Sockets
 
-**TODO: Add description**
+## What I Want To Test
 
-## Installation
+* I want to test out getting information from a web socket and doing some processing on the data. The web sockets I will be the one's used for the SHOWROOM chat log.
+* The data processing will keep track of certain analytics
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `websockets` to your list of dependencies in `mix.exs`:
+## Todo
 
-```elixir
-def deps do
-  [
-    {:websockets, "~> 0.1.0"}
-  ]
-end
-```
+- [x] Connect to web socket
+- [ ] Filter out the data
+- [ ] Keep track of certain analytics
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/websockets](https://hexdocs.pm/websockets).
-
+## Related Links I Found Useful
