@@ -4,9 +4,9 @@ To run:
 ```
 mix run bin/main.exs <SHOWROOM_ROOM_URL_KEY>
 ```
-where `digital_idol_19` is the SHOWROOM_ROOM_URL_KEY in https://www.showroom-live.com/digital_idol_19
+where `digital_idol_19` is the SHOWROOM_ROOM_URL_KEY in https://www.showroom-live.com/48_NAKAI_RIKA
 
-See it working version of it [https://twitter.com/missingno15/status/92594473262642380://twitter.com/missingno15/status/925944732626423808](here)
+See it working version of it [https://twitter.com/missingno15/status/925944732626423808](here)
 
 
 ## What I Want To Test
