@@ -25,7 +25,7 @@ defmodule Websockets.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:websockex, "~> 0.4.0"},
+      {:socket, "~> 0.3.12"},
       {:timex, "~> 3.1"},
       {:httpoison, "~> 0.13.0"},
       {:poison, "~> 3.1"}
