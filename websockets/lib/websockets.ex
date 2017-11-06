@@ -10,39 +10,56 @@ defmodule Websockets do
     socket |> Socket.Web.send!( {:text, "SUB\t#{fetch_bcsvr_key(room_url_key)}"})
     socket |> Socket.Web.send!({:text, "PING\tshowroom"})
 
-    loop(socket, Timex.now, 0, 0)
+    Logger.info("Application started")
+
+    loop(socket, %{}, 0, 0)
   end
 
-  defp loop(socket, _ping_time, time_elapsed_since_last_ping, comment_count) when time_elapsed_since_last_ping >= 60 do
-    socket |> Socket.Web.send!({:text, "PING\tshowroom"})
+  defp loop(socket, message, seconds_elapsed, comment_count) when map_size(message) == 0 do
+    new_message = Socket.Web.recv!(socket)
+              |> elem(1)
+              |> transform_message()
 
-    {:text, message} = socket |> Socket.Web.recv!()
-    message 
-    |> process_message()
-    |> IO.inspect()
+    # IO.inspect(message)
 
-    Logger.info("#{comment_count} per minute")
-
-    loop(socket, Timex.now, 0, 0) 
-  end
-  defp loop(socket, ping_time, _time_elapsed_since_last_ping, comment_count) do
-    {:text, message} = socket |> Socket.Web.recv!()
-
-
-    message 
-    |> process_message()
-    |> IO.inspect()
-
-    new_comment_count = message 
-                        |> process_message()
-                        |> increment_comment_count(comment_count)
-
-    # loop(socket, ping_time, Timex.diff(Timex.now, ping_time, :seconds), 0)
-    loop(socket, ping_time, Timex.diff(Timex.now, ping_time, :seconds), new_comment_count)
+    loop(socket, new_message, seconds_elapsed, comment_count) 
   end
 
-  defp process_message(message)  do
-    if String.match?(message, ~r/^ACK/) do
+  defp loop(socket, _oldest_message_in_range, seconds_elapsed, comment_count) when seconds_elapsed >= 60 do
+    Socket.Web.send!(socket, {:text, "PING\tshowroom"})
+
+    Logger.info("#{comment_count} comments in the past minute")
+
+    new_message = Socket.Web.recv!(socket)
+                  |> elem(1)
+                  |> transform_message()
+
+    loop(socket, new_message, 0, 0)
+  end
+
+  defp loop(socket, %{"cm" => _, "created_at" => created_at} = message, _seconds_elapsed, comment_count) do
+    new_message = Socket.Web.recv!(socket)
+                  |> elem(1)
+                  |> transform_message()
+
+    loop(
+      socket,
+      message, 
+      DateTime.diff(DateTime.utc_now(), DateTime.from_unix!(created_at)),
+      increment_comment_count(new_message, comment_count)
+    )
+  end
+   
+  defp loop(socket, _message, seconds_elapsed, comment_count) do
+    new_message = Socket.Web.recv!(socket)
+                  |> elem(1)
+                  |> transform_message()
+
+    loop(socket, new_message, seconds_elapsed, comment_count) 
+  end
+
+  defp transform_message(message)  do
+    if not String.match?(message, ~r/^MSG/) do
       %{} 
     else
       message
