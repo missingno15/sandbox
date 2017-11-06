@@ -1,4 +1,3 @@
-require IEx
 defmodule Websockets do
   require Logger
 
@@ -16,53 +15,31 @@ defmodule Websockets do
   end
 
   defp loop(socket, message, seconds_elapsed, comment_count) when map_size(message) == 0 do
-    new_message = Socket.Web.recv!(socket)
-              |> elem(1)
-              |> transform_message()
-
-    # IO.inspect(message)
-
-    loop(socket, new_message, seconds_elapsed, comment_count) 
-  end
-
-  defp loop(socket, _oldest_message_in_range, seconds_elapsed, comment_count) when seconds_elapsed >= 60 do
-    Socket.Web.send!(socket, {:text, "PING\tshowroom"})
-
-    Logger.info("#{comment_count} comments in the past minute")
-
-    new_message = Socket.Web.recv!(socket)
-                  |> elem(1)
-                  |> transform_message()
-
-    loop(socket, new_message, 0, 0)
+    loop(socket, fetch_message(socket), seconds_elapsed, comment_count) 
   end
 
   defp loop(socket, %{"cm" => _, "created_at" => created_at} = message, _seconds_elapsed, comment_count) do
-    new_message = Socket.Web.recv!(socket)
-                  |> elem(1)
-                  |> transform_message()
+    new_message = fetch_message(socket)
 
     loop(
       socket,
-      message, 
+      message,
       DateTime.diff(DateTime.utc_now(), DateTime.from_unix!(created_at)),
       increment_comment_count(new_message, comment_count)
     )
   end
    
   defp loop(socket, _message, seconds_elapsed, comment_count) do
-    new_message = Socket.Web.recv!(socket)
-                  |> elem(1)
-                  |> transform_message()
-
-    loop(socket, new_message, seconds_elapsed, comment_count) 
+    loop(socket, fetch_message(socket), seconds_elapsed, comment_count) 
   end
 
-  defp transform_message(message)  do
-    if not String.match?(message, ~r/^MSG/) do
+  defp fetch_message(socket)  do
+    {:text, frame} = Socket.Web.recv!(socket)
+
+    if not String.match?(frame, ~r/^MSG/) do
       %{} 
     else
-      message
+      frame
       |> String.split(~r/[[:space:]]/i, parts: 3)
       |> List.last()
       |> String.trim_leading("\"")
