@@ -14,6 +14,14 @@ defmodule Websockets do
     loop(socket, %{}, 0, 0)
   end
 
+  defp loop(socket, _message, seconds_elapsed, comment_count) when seconds_elapsed >= 60 do
+    Socket.Web.send!(socket, {:text, "PING\tshowroom"})
+
+    Logger.info("#{comment_count} comments in the past minute")
+
+    loop(socket, fetch_message(socket), 0, 0)
+  end
+
   defp loop(socket, message, seconds_elapsed, comment_count) when map_size(message) == 0 do
     loop(socket, fetch_message(socket), seconds_elapsed, comment_count) 
   end
@@ -23,7 +31,7 @@ defmodule Websockets do
 
     loop(
       socket,
-      message,
+      message 
       DateTime.diff(DateTime.utc_now(), DateTime.from_unix!(created_at)),
       increment_comment_count(new_message, comment_count)
     )
