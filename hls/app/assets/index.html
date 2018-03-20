@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Brunch</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/vendor.js"></script>
+  <script src="/app.js"></script>
+  <script>require('initialize');</script>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <video id="video"></video>
+  <script>
+    var hlsurl = "http://localhost:4001/api?hls=https://edge-210-140-227-97.showroom-live.com:443/liveedge/b45e52ac19201f4a1d30c27565b3f1ae16c06a16582eea0f0b479e883a0e3024/playlist.m3u8";
+
+    if(Hls.isSupported()) {
+      var video = document.getElementById('video');
+
+      var hls = new Hls();
+      hls.loadSource(hlsurl);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED,function() {
+        video.play();
+      });
+    }
+  </script>
+</body>
