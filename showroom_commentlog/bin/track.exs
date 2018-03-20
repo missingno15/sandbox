@@ -1,7 +1,7 @@
 require IEx
 
-track = fn room_url_key ->
-  Showroom.Livestream.status(room_url_key) |> Map.get("room_id") |> Showroom.CommentLog.track()
-end
+room_url_key = "48_Anna_Iriyama"
 
-IEx.pry()
+Showroom.Livestream.status(room_url_key) 
+  |> Map.get("room_id") 
+  |> Showroom.CommentLog.track()
